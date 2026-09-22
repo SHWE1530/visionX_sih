@@ -96,26 +96,27 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section class="relative pt-32 pb-20 min-h-[90vh] flex items-center overflow-hidden">
         <!-- Background Video -->
         <div class="absolute inset-0 w-full h-full z-0">
-            <div class="absolute inset-0 bg-slate-900/70 z-10"></div> <!-- Dark overlay -->
-            <video id="hero-video-player" class="absolute inset-0 w-full h-full object-cover" controls autoplay muted loop playsinline preload="auto">
+            <!-- Gradient overlay: dark on the left for text readability, clear on the right to show the video completely -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-10"></div> 
+            <video id="hero-video-player" class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto">
                 <source src="video/0921.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
 
         <!-- Content -->
-        <div class="container mx-auto px-6 relative z-20 text-center">
-            <div class="max-w-4xl mx-auto space-y-8">
-                <p class="text-sm font-semibold uppercase tracking-wider text-blue-400">Smart India Hackathon 2026 · PS ID 26178</p>
-                <h1 class="text-5xl md:text-7xl font-bold leading-tight text-white drop-shadow-md">
+        <div class="container mx-auto px-6 relative z-20 text-left">
+            <div class="max-w-2xl space-y-8">
+                <p class="text-sm font-semibold uppercase tracking-wider text-blue-400 drop-shadow">Smart India Hackathon 2026 · PS ID 26178</p>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg">
                     TEAM VISIONX
                 </h1>
-                <p class="text-xl text-gray-200 drop-shadow">Distributed Environmental Intelligence Network — from reactive disaster response to proactive risk prevention.</p>
+                <p class="text-xl text-gray-200 drop-shadow-md">Distributed Environmental Intelligence Network — from reactive disaster response to proactive risk prevention.</p>
                 
-                <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex flex-wrap gap-4">
                     <a href="#solution" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors shadow-lg">
                         Our Solution
                     </a>
@@ -125,17 +126,17 @@
                     </a>
                 </div>
 
-                <div class="flex flex-wrap items-center justify-center gap-2 text-xs font-bold tracking-widest text-gray-200 mt-8">
-                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md">DETECT</span><span class="text-blue-400">→</span>
-                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md">VERIFY</span><span class="text-blue-400">→</span>
-                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md">PREDICT</span><span class="text-blue-400">→</span>
-                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md">ACT</span>
+                <div class="flex flex-wrap items-center gap-2 text-xs font-bold tracking-widest text-gray-200 mt-8">
+                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md shadow">DETECT</span><span class="text-blue-400 drop-shadow">→</span>
+                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md shadow">VERIFY</span><span class="text-blue-400 drop-shadow">→</span>
+                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md shadow">PREDICT</span><span class="text-blue-400 drop-shadow">→</span>
+                    <span class="px-4 py-1.5 rounded-full bg-blue-900/50 border border-blue-500/30 backdrop-blur-md shadow">ACT</span>
                 </div>
             </div>
 
             <!-- Metrics Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-5xl mx-auto text-left">
-                <div class="p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-xl flex items-center gap-3 hover:bg-white/20 transition-colors">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 max-w-4xl text-left">
+                <div class="p-4 bg-slate-900/40 backdrop-blur-md rounded-xl border border-white/10 shadow-xl flex items-center gap-3 hover:bg-slate-800/60 transition-colors">
                     <div class="p-2 bg-blue-500/20 rounded-lg">
                         <i data-lucide="shield-alert" class="w-6 h-6 text-blue-300 shrink-0"></i>
                     </div>
@@ -144,7 +145,7 @@
                         <p class="text-sm font-bold text-white">Disaster Management</p>
                     </div>
                 </div>
-                <div class="p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-xl flex items-center gap-3 hover:bg-white/20 transition-colors">
+                <div class="p-4 bg-slate-900/40 backdrop-blur-md rounded-xl border border-white/10 shadow-xl flex items-center gap-3 hover:bg-slate-800/60 transition-colors">
                     <div class="p-2 bg-blue-500/20 rounded-lg">
                         <i data-lucide="cpu" class="w-6 h-6 text-blue-300 shrink-0"></i>
                     </div>
@@ -153,7 +154,7 @@
                         <p class="text-sm font-bold text-white">Hardware</p>
                     </div>
                 </div>
-                <div class="p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-xl flex items-center gap-3 hover:bg-white/20 transition-colors">
+                <div class="p-4 bg-slate-900/40 backdrop-blur-md rounded-xl border border-white/10 shadow-xl flex items-center gap-3 hover:bg-slate-800/60 transition-colors">
                     <div class="p-2 bg-blue-500/20 rounded-lg">
                         <i data-lucide="zap" class="w-6 h-6 text-blue-300 shrink-0"></i>
                     </div>
@@ -162,7 +163,7 @@
                         <p class="text-sm font-bold text-white">&lt; 25 ms</p>
                     </div>
                 </div>
-                <div class="p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-xl flex items-center gap-3 hover:bg-white/20 transition-colors">
+                <div class="p-4 bg-slate-900/40 backdrop-blur-md rounded-xl border border-white/10 shadow-xl flex items-center gap-3 hover:bg-slate-800/60 transition-colors">
                     <div class="p-2 bg-blue-500/20 rounded-lg">
                         <i data-lucide="indian-rupee" class="w-6 h-6 text-blue-300 shrink-0"></i>
                     </div>
