@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team VISIONX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .image-hover {
+            transition: all 0.5s ease;
+        }
+
+        .image-hover:hover {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        #progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0;
+            background: linear-gradient(90deg, #2563eb, #4f46e5); z-index: 60;
+        }
+
+        .flow-arrow { color: #93c5fd; }
+
+        .demo-step { opacity: .35; transition: all .4s ease; }
+        .demo-step.on { opacity: 1; }
+        .demo-step.on .dot { background: #2563eb; box-shadow: 0 0 0 6px #dbeafe; }
+
+        .bar-fill { width: 0; transition: width 1.2s ease-out; }
+        .active .bar-fill { width: var(--w); }
+
+        @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(220,38,38,.5); } 100% { box-shadow: 0 0 0 16px rgba(220,38,38,0); } }
+        .pulse { animation: pulse-ring 1.4s infinite; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <div id="progress"></div>
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-extrabold gradient-text tracking-tight">VISIONX</a>
+                <div class="hidden lg:flex items-center text-sm font-medium text-gray-600 space-x-6">
+                    <a href="#problem" class="hover:text-blue-600 transition-colors">Problem</a>
+                    <a href="#solution" class="hover:text-blue-600 transition-colors">Solution</a>
+                    <a href="#architecture" class="hover:text-blue-600 transition-colors">How it Works</a>
+                    <a href="#innovation" class="hover:text-blue-600 transition-colors">Innovation</a>
+                    <a href="#demo" class="hover:text-blue-600 transition-colors">Demo</a>
+                    <a href="#technical" class="hover:text-blue-600 transition-colors">Technical</a>
+                    <a href="#feasibility" class="hover:text-blue-600 transition-colors">Feasibility</a>
+                    <a href="#impact" class="hover:text-blue-600 transition-colors">Impact</a>
+                    <a href="#research" class="hover:text-blue-600 transition-colors">Research</a>
+                    <a href="#mentors" class="hover:text-blue-600 transition-colors">Mentors</a>
+                    <a href="#dashboard" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Command Center</a>
+                </div>
+                <button id="menu-btn" class="lg:hidden p-2 text-gray-700" aria-label="Open menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+            <div id="mobile-menu" hidden class="lg:hidden pt-4 grid grid-cols-2 gap-3 text-sm font-medium text-gray-700">
+                <a href="#problem">Problem</a><a href="#solution">Solution</a>
+                <a href="#architecture">How it Works</a><a href="#innovation">Innovation</a>
+                <a href="#demo">Demo</a><a href="#technical">Technical</a>
+                <a href="#feasibility">Feasibility</a><a href="#impact">Impact</a>
+                <a href="#research">Research</a><a href="#mentors">Mentors</a><a href="#dashboard" class="text-blue-600">Command Center →</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-blue-600">Smart India Hackathon 2026 · PS ID 26178</p>
+                    <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                        <span class="gradient-text">TEAM VISIONX</span>
+                    </h1>
+                    <p class="text-xl text-gray-600">Distributed Environmental Intelligence Network — from reactive disaster response to proactive risk prevention.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#solution" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            Our Solution
+                        </a>
+                        <a href="#demo" class="px-8 py-3 border border-gray-300 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors inline-flex items-center gap-2">
+                            <i data-lucide="play-circle" class="w-5 h-5 text-blue-600"></i>
+                            <span>Watch Demo Video</span>
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 text-xs font-bold tracking-widest text-gray-500">
+                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700">DETECT</span><span>→</span>
+                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700">VERIFY</span><span>→</span>
+                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700">PREDICT</span><span>→</span>
+                        <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700">ACT</span>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <!-- Hero Video Player Container -->
+                    <div class="relative rounded-2xl overflow-hidden bg-slate-950 border-2 border-blue-500/40 shadow-2xl shadow-blue-500/25">
+                        <div class="relative w-full aspect-video bg-black flex items-center justify-center">
+                            <!-- Video embed: update GOOGLE_DRIVE_FILE_ID with your Google Drive video file ID -->
+                            <!-- To get the file ID: open your video in Google Drive → Share → Copy link → the ID is between /d/ and /view -->
+                            <iframe
+                                id="hero-video-player"
+                                class="w-full h-full rounded-2xl"
+                                src="https://drive.google.com/file/d/GOOGLE_DRIVE_FILE_ID/preview"
+                                allow="autoplay; fullscreen"
+                                allowfullscreen
+                                frameborder="0"
+                                title="VisionX Demo Video"
+                                style="min-height:100%; min-width:100%;"
+                            ></iframe>
+                        </div>
+                        <!-- Fallback overlay shown if iframe cannot load -->
+                        <noscript>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900 text-white gap-4 p-6">
+                                <i class="text-5xl">▶</i>
+                                <p class="text-lg font-semibold">Demo Video</p>
+                                <a href="https://drive.google.com/drive/folders/1pRwWKcHfGlphnCdfUdEtHTkHSvfc-7YU?usp=sharing" target="_blank" rel="noopener" class="px-6 py-2 bg-blue-600 rounded-lg hover:bg-blue-500 transition-colors">Watch on Google Drive →</a>
+                            </div>
+                        </noscript>
+                    </div>
+
+                    <!-- Metrics Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-white rounded-xl shadow-md border border-gray-100 flex items-center gap-3">
+                            <i data-lucide="shield-alert" class="w-6 h-6 text-blue-600 shrink-0"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Theme</p>
+                                <p class="text-sm font-bold text-gray-900">Disaster Management</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl shadow-md border border-gray-100 flex items-center gap-3">
+                            <i data-lucide="cpu" class="w-6 h-6 text-blue-600 shrink-0"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">PS Category</p>
+                                <p class="text-sm font-bold text-gray-900">Hardware</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl shadow-md border border-gray-100 flex items-center gap-3">
+                            <i data-lucide="zap" class="w-6 h-6 text-blue-600 shrink-0"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Decision time</p>
+                                <p class="text-sm font-bold text-gray-900">&lt; 25 ms</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl shadow-md border border-gray-100 flex items-center gap-3">
+                            <i data-lucide="indian-rupee" class="w-6 h-6 text-blue-600 shrink-0"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Cost per node</p>
+                                <p class="text-sm font-bold text-gray-900">₹8,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="award" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Problem Statement</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">AI-Powered Environmental Monitoring</h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    A resilient, AI-powered environmental monitoring network that provides early detection, localized intelligence,
+                    and actionable alerts for floods, forest fires, pollution events, and other environmental hazards common in India,
+                    enabling authorities and communities to shift from reactive disaster response to proactive risk prevention.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 pt-2">
+                    <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Problem Statement ID – 26178</span>
+                    <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Theme – Disaster Management</span>
+                    <span class="px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Category – Hardware</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-400">
+                    <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">The Problem</span>
+                </div>
+                <h2 class="text-4xl font-bold">India faces many hazards at once</h2>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">Traditional monitoring depends on centralized infrastructure and continuous connectivity, so by the time a warning goes out, it is often too late.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto mb-14">
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="waves" class="w-4 h-4 text-blue-400"></i>Urban &amp; river flooding</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="flame" class="w-4 h-4 text-orange-400"></i>Forest fires</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="wind" class="w-4 h-4 text-gray-300"></i>Air pollution</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="thermometer-sun" class="w-4 h-4 text-red-400"></i>Extreme heat</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="mountain" class="w-4 h-4 text-amber-400"></i>Landslides</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="factory" class="w-4 h-4 text-purple-400"></i>Industrial emissions &amp; chemical leaks</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="droplet" class="w-4 h-4 text-cyan-400"></i>Water quality degradation</span>
+                <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="cloud-lightning" class="w-4 h-4 text-yellow-300"></i>Extreme weather events</span>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl card-hover">
+                    <i data-lucide="clock-alert" class="w-8 h-8 text-red-400 mb-4"></i>
+                    <h3 class="font-semibold mb-2">Delayed Detection</h3>
+                    <p class="text-sm text-gray-400">Risk can escalate before centralized systems respond.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl card-hover">
+                    <i data-lucide="wifi-off" class="w-8 h-8 text-red-400 mb-4"></i>
+                    <h3 class="font-semibold mb-2">Connectivity Dependency</h3>
+                    <p class="text-sm text-gray-400">Remote areas may experience unreliable network connectivity.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl card-hover">
+                    <i data-lucide="unlink" class="w-8 h-8 text-red-400 mb-4"></i>
+                    <h3 class="font-semibold mb-2">Isolated Data</h3>
+                    <p class="text-sm text-gray-400">Individual sensors detect anomalies without enough context.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl card-hover">
+                    <i data-lucide="bell-off" class="w-8 h-8 text-red-400 mb-4"></i>
+                    <h3 class="font-semibold mb-2">False Alerts</h3>
+                    <p class="text-sm text-gray-400">Single-sensor thresholds generate unreliable warnings.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-2xl card-hover">
+                    <i data-lucide="undo-2" class="w-8 h-8 text-red-400 mb-4"></i>
+                    <h3 class="font-semibold mb-2">Reactive Response</h3>
+                    <p class="text-sm text-gray-400">Workflows focus on responding after risk becomes severe.</p>
+                </div>
+            </div>
+
+            <p class="text-center text-xl md:text-2xl font-semibold mt-14 max-w-3xl mx-auto">
+                “VisionX transforms distributed environmental data into <span class="text-blue-400">localized, predictive and actionable intelligence.</span>”
+            </p>
+        </div>
+    </section>
+
+    <!-- Proposed Solution Section -->
+    <section id="solution" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Proposed Solution</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">VISIONX – Distributed Environmental Intelligence Network</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="activity" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Smart Monitoring</h3>
+                    <p class="text-gray-600">Land &amp; Water nodes continuously monitor environmental conditions and hazards.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Edge AI Detection</h3>
+                    <p class="text-gray-600">ESP32-S3 detects anomalies, trends and early risk locally.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="layers" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Multi-Source Data</h3>
+                    <p class="text-gray-600">Combines sensor + satellite + weather data for better situational awareness.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="radio" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Resilient Communication</h3>
+                    <p class="text-gray-600">Wi-SUN + 4G/5G + local storage keep monitoring active during network failures.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="brain" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Regional AI Prediction</h3>
+                    <p class="text-gray-600">VENTUNO Q fuses multiple nodes, verifies events and predicts hazard spread and impact.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="bell-ring" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Actionable Alerts</h3>
+                    <p class="text-gray-600">Sends prioritized alerts to authorities and triggers local emergency alarms for faster response.</p>
+                </div>
+            </div>
+
+            <!-- Workflow -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold text-gray-900 text-center mb-10">How It Works</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">1</div>
+                        <h4 class="font-semibold text-lg">Monitor</h4>
+                        <p class="text-gray-600 text-sm">Continuous environmental monitoring</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">2</div>
+                        <h4 class="font-semibold text-lg">Detect</h4>
+                        <p class="text-gray-600 text-sm">Identify unusual changes</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">3</div>
+                        <h4 class="font-semibold text-lg">Analyse</h4>
+                        <p class="text-gray-600 text-sm">Understand the situation</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">4</div>
+                        <h4 class="font-semibold text-lg">Verify</h4>
+                        <p class="text-gray-600 text-sm">Confirm the event</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">5</div>
+                        <h4 class="font-semibold text-lg">Predict</h4>
+                        <p class="text-gray-600 text-sm">Estimate hazard progression</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">6</div>
+                        <h4 class="font-semibold text-lg">Prioritize</h4>
+                        <p class="text-gray-600 text-sm">Assess risk and impact</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">7</div>
+                        <h4 class="font-semibold text-lg">Alert</h4>
+                        <p class="text-gray-600 text-sm">Notify the right people</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-2xl card-hover">
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-4">8</div>
+                        <h4 class="font-semibold text-lg">Response</h4>
+                        <p class="text-gray-600 text-sm">Enable faster action and continuous improvement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works / Architecture Section -->
+    <section id="architecture" class="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="git-branch" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">How It Works</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Edge → Gateway → Cloud</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Detect locally, verify collectively, understand regionally, then predict and act proactively.</p>
+            </div>
+
+            <!-- Three layers -->
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                <div class="relative p-8 bg-white rounded-2xl shadow-lg card-hover border-t-4 border-blue-500">
+                    <span class="absolute top-4 right-6 text-5xl font-black text-blue-50">01</span>
+                    <p class="text-xs font-bold tracking-widest text-blue-600 mb-1">EDGE · DETECT LOCALLY</p>
+                    <h3 class="text-2xl font-semibold mb-5">Smart Sensor Node</h3>
+                    <ol class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">1</span>Raw Sensor Data</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">2</span>Signal Processing</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">3</span>Temporal Analysis</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">4</span>Anomaly Detection</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">5</span>Local Risk + Confidence Score</li>
+                    </ol>
+                    <p class="mt-6 text-sm italic text-blue-700 bg-blue-50 rounded-lg p-3">“Critical decisions do not need to wait for the cloud.”</p>
+                </div>
+                <div class="relative p-8 bg-white rounded-2xl shadow-lg card-hover border-t-4 border-indigo-500">
+                    <span class="absolute top-4 right-6 text-5xl font-black text-indigo-50">02</span>
+                    <p class="text-xs font-bold tracking-widest text-indigo-600 mb-1">GATEWAY · VERIFY COLLECTIVELY</p>
+                    <h3 class="text-2xl font-semibold mb-5">VisionX AI Gateway</h3>
+                    <ol class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">1</span>Data Validation &amp; Buffering</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">2</span>Multi-Node AI Fusion</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">3</span>Risk Ranking</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">4</span>Sensor Fault Detection</li>
+                        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center">5</span>Alert Prioritization</li>
+                    </ol>
+                    <p class="mt-6 text-sm italic text-indigo-700 bg-indigo-50 rounded-lg p-3">“Combines intelligence from multiple nodes instead of trusting isolated readings.”</p>
+                </div>
+                <div class="relative p-8 bg-white rounded-2xl shadow-lg card-hover border-t-4 border-violet-500">
+                    <span class="absolute top-4 right-6 text-5xl font-black text-violet-50">03</span>
+                    <p class="text-xs font-bold tracking-widest text-violet-600 mb-1">CLOUD · UNDERSTAND REGIONALLY</p>
+                    <h3 class="text-2xl font-semibold mb-5">Regional Intelligence</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Receives</p>
+                            <ul class="space-y-1 text-gray-600"><li>Critical alerts</li><li>Risk summaries</li><li>Sensor insights</li><li>Historical data</li></ul>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Performs</p>
+                            <ul class="space-y-1 text-gray-600"><li>Regional risk mapping</li><li>Trend analysis</li><li>Forecasting</li><li>Digital twin</li></ul>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-sm italic text-violet-700 bg-violet-50 rounded-lg p-3">“Enhances the system, but is not required for edge-level detection.”</p>
+                </div>
+            </div>
+
+            <!-- Node types -->
+            <h3 class="text-2xl font-bold text-gray-900 text-center mt-20 mb-3">Two Types of Smart Sensor Nodes</h3>
+            <div class="flex flex-wrap justify-center gap-3 mb-10 text-xs font-bold tracking-wider">
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-amber-100 text-amber-800 rounded-full"><i data-lucide="sun" class="w-3.5 h-3.5"></i>SOLAR POWERED</span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-green-100 text-green-800 rounded-full"><i data-lucide="wrench" class="w-3.5 h-3.5"></i>LOW MAINTENANCE</span>
+                <span class="flex items-center gap-1.5 px-3 py-1 bg-blue-100 text-blue-800 rounded-full"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i>REMOTE DEPLOYMENT</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="p-8 rounded-2xl text-white bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg card-hover">
+                    <div class="flex items-center gap-3 mb-6"><i data-lucide="waves" class="w-8 h-8"></i><h4 class="text-2xl font-bold">Water Node</h4></div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Water level</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Rainfall</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Flow rate</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">pH</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Turbidity</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">EC / TDS</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Temperature</span>
+                    </div>
+                </div>
+                <div class="p-8 rounded-2xl text-white bg-gradient-to-br from-emerald-500 to-teal-700 shadow-lg card-hover">
+                    <div class="flex items-center gap-3 mb-6"><i data-lucide="mountain" class="w-8 h-8"></i><h4 class="text-2xl font-bold">Land Node</h4></div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Temperature</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Humidity</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Smoke</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">PM2.5 / PM10</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Gas</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Soil moisture</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Vibration / tilt</span>
+                        <span class="px-3 py-1.5 bg-white/20 rounded-lg text-sm">Rain</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offline buffer -->
+            <div class="mt-16 max-w-5xl mx-auto p-8 bg-white rounded-2xl shadow-lg">
+                <div class="flex items-center gap-3 mb-6">
+                    <i data-lucide="hard-drive" class="w-7 h-7 text-blue-600"></i>
+                    <h3 class="text-xl font-semibold">When the network goes down, VisionX keeps working</h3>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 text-sm font-medium">
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg">Sensor Node</span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg">Local Storage</span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg">Continue AI Detection</span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg">Store Data</span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-green-100 text-green-800 rounded-lg">Network Restored</span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-blue-600 text-white rounded-lg">Auto Sync</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section id="innovation" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Innovation</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Innovation &amp; Uniqueness</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="trending-up" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Risk-Adaptive Sensing</h3>
+                    <p class="text-gray-600">Risk ↑ → Monitoring ↑</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="network" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Multi-Node Consensus</h3>
+                    <p class="text-gray-600">Cross-node verification</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="fingerprint" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Environmental Fingerprint</h3>
+                    <p class="text-gray-600">Location-based baseline</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="waves" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Hazard Progression</h3>
+                    <p class="text-gray-600">Predict hazard spread</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="target" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Impact-Aware Alerts</h3>
+                    <p class="text-gray-600">Risk + Impact</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="wifi-off" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Offline-First</h3>
+                    <p class="text-gray-600">Works without internet</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="layers-3" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Three-Layer Intelligence</h3>
+                    <p class="text-gray-600">Edge → Regional → Cloud</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="package" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Intelligent Packets</h3>
+                    <p class="text-gray-600">Only key data transmitted</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <i data-lucide="signal" class="w-8 h-8 text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Resilient Communication</h3>
+                    <p class="text-gray-600">Wi-SUN → Cellular → Voice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation in Action Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="microscope" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Innovation in Action</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Why VisionX Is Different: Worked Examples</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Fingerprint -->
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i data-lucide="fingerprint" class="w-6 h-6 text-blue-600"></i>Local Environmental Fingerprint</h3>
+                    <p class="text-gray-600 mb-6">Learns what “normal” looks like for each location and flags deviations from that baseline.</p>
+                    <div class="grid grid-cols-3 gap-3 text-center">
+                        <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500">Normal level</p><p class="font-bold text-gray-900">2.5–3.5 m</p></div>
+                        <div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500">Current</p><p class="font-bold text-gray-900">4.2 m</p></div>
+                        <div class="p-3 bg-red-50 rounded-xl"><p class="text-xs text-red-500">Deviation</p><p class="font-bold text-red-600">+34%</p></div>
+                    </div>
+                    <p class="mt-4 text-sm font-bold text-red-600">Result: HIGHLY ABNORMAL</p>
+                </div>
+
+                <!-- Consensus -->
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i data-lucide="network" class="w-6 h-6 text-blue-600"></i>Multi-Node Consensus</h3>
+                    <p class="text-gray-600 mb-6">Neighbouring nodes independently analyse the same event, so one faulty sensor can't trigger an alarm.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center gap-3"><span class="w-14">Node A</span><div class="flex-1 h-2.5 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-green-500 rounded-full" style="--w:91%"></div></div><b class="w-10 text-right">91%</b></div>
+                        <div class="flex items-center gap-3"><span class="w-14">Node B</span><div class="flex-1 h-2.5 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-green-500 rounded-full" style="--w:87%"></div></div><b class="w-10 text-right">87%</b></div>
+                        <div class="flex items-center gap-3"><span class="w-14">Node C</span><div class="flex-1 h-2.5 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-green-500 rounded-full" style="--w:93%"></div></div><b class="w-10 text-right">93%</b></div>
+                        <div class="flex items-center gap-3"><span class="w-14">Node D</span><div class="flex-1 h-2.5 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-gray-400 rounded-full" style="--w:21%"></div></div><b class="w-10 text-right text-gray-500">21%</b></div>
+                    </div>
+                    <p class="mt-4 text-sm font-bold text-green-700">3 / 4 nodes confirm → EVENT VERIFIED</p>
+                </div>
+
+                <!-- Propagation -->
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i data-lucide="navigation" class="w-6 h-6 text-blue-600"></i>Hazard Propagation Prediction</h3>
+                    <p class="text-gray-600 mb-6">Answers not only “is there a hazard?” but “where will it move next?”</p>
+                    <div class="flex items-center justify-between gap-1 text-xs sm:text-sm font-semibold text-center">
+                        <span class="px-3 py-2 bg-red-500 text-white rounded-lg">Current Zone</span><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                        <span class="px-3 py-2 bg-orange-400 text-white rounded-lg">Zone B</span><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                        <span class="px-3 py-2 bg-amber-300 text-gray-900 rounded-lg">Zone C</span><i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                        <span class="px-3 py-2 bg-yellow-100 text-gray-900 rounded-lg">Village D</span>
+                    </div>
+                    <p class="mt-6 text-sm">Estimated arrival: <b class="text-2xl text-red-600">31 min</b></p>
+                </div>
+
+                <!-- Impact-aware -->
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i data-lucide="target" class="w-6 h-6 text-blue-600"></i>Impact-Aware Risk</h3>
+                    <p class="text-gray-600 mb-6">A hazard isn't automatically an emergency. VisionX asks: <i>who is actually at risk?</i></p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex-1 space-y-2 text-sm">
+                            <div><div class="flex justify-between"><span>Hazard Severity</span><b>86</b></div><div class="h-2 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-red-500 rounded-full" style="--w:86%"></div></div></div>
+                            <div><div class="flex justify-between"><span>Exposure</span><b>79</b></div><div class="h-2 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-orange-500 rounded-full" style="--w:79%"></div></div></div>
+                            <div><div class="flex justify-between"><span>Vulnerability</span><b>68</b></div><div class="h-2 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-amber-500 rounded-full" style="--w:68%"></div></div></div>
+                            <div><div class="flex justify-between"><span>Confidence</span><b>95</b></div><div class="h-2 bg-gray-100 rounded-full"><div class="bar-fill h-full bg-blue-600 rounded-full" style="--w:95%"></div></div></div>
+                        </div>
+                        <div class="text-center shrink-0">
+                            <div class="w-24 h-24 rounded-full bg-red-50 border-4 border-red-500 flex flex-col items-center justify-center">
+                                <span class="text-3xl font-black text-red-600">91</span><span class="text-xs text-gray-500">/ 100</span>
+                            </div>
+                            <p class="mt-2 text-xs font-bold text-red-600">CRITICAL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explainable AI -->
+            <div class="mt-8 max-w-6xl mx-auto p-8 bg-white rounded-2xl shadow-lg card-hover">
+                <h3 class="text-xl font-semibold mb-2 flex items-center gap-2"><i data-lucide="search-check" class="w-6 h-6 text-blue-600"></i>Explainable AI Alerts</h3>
+                <p class="text-gray-600 mb-6">Every critical alert shows the evidence behind it, so authorities can trust and act on it.</p>
+                <div class="flex flex-wrap items-center gap-3 text-sm">
+                    <span class="px-4 py-2 bg-gray-50 border rounded-lg">Water Level <b>+34%</b></span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-50 border rounded-lg">Rainfall <b>2.4× normal</b></span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-50 border rounded-lg">Rise Rate <b>+22 cm/min</b></span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-50 border rounded-lg">Neighbours <b>3 / 4</b></span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-gray-50 border rounded-lg">Confidence <b>95%</b></span><i data-lucide="arrow-right" class="w-4 h-4 flow-arrow"></i>
+                    <span class="px-4 py-2 bg-red-600 text-white font-bold rounded-lg">CRITICAL FLOOD ALERT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-400">
+                    <i data-lucide="play-circle" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">VisionX in Action</span>
+                </div>
+                <h2 class="text-4xl font-bold">From Sensor Signal to Emergency Action in 4 Minutes</h2>
+                <p class="text-gray-400">Scenario: <b class="text-white">Flash Flood — River Basin / Zone 04</b></p>
+                <button id="run-demo" class="mt-2 inline-flex items-center gap-2 px-8 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-500 transition-colors">
+                    <i data-lucide="play" class="w-5 h-5"></i><span>Run Demo Scenario</span>
+                </button>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+                <!-- Timeline -->
+                <ol class="lg:col-span-3 relative border-l-2 border-white/10 ml-3 space-y-6">
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:27</p><p>Rainfall anomaly detected · Water level rising rapidly</p></li>
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:28</p><p>Local Edge AI detects abnormal pattern</p></li>
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:29</p><p>Upstream node confirms anomaly</p></li>
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:30</p><p>Multi-node consensus achieved · Flood risk calculated</p></li>
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:30</p><p>Propagation model predicts downstream movement · Population &amp; infrastructure impact assessed</p></li>
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:31</p><p class="font-bold text-red-400">CRITICAL ALERT GENERATED · Authorities notified</p></li>
+                    <li class="demo-step pl-8 relative"><span class="dot absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-600"></span><p class="text-xs font-mono text-blue-400">14:31</p><p>Community warning issued</p></li>
+                </ol>
+
+                <!-- Live readings -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-4 bg-white/5 rounded-xl"><p class="text-xs text-gray-400">Rainfall</p><p class="text-xl font-bold font-mono" data-demo="48 mm/h">--</p></div>
+                        <div class="p-4 bg-white/5 rounded-xl"><p class="text-xs text-gray-400">Water Level</p><p class="text-xl font-bold font-mono" data-demo="4.21 m">--</p></div>
+                        <div class="p-4 bg-white/5 rounded-xl"><p class="text-xs text-gray-400">Rise Rate</p><p class="text-xl font-bold font-mono" data-demo="22 cm/min">--</p></div>
+                        <div class="p-4 bg-white/5 rounded-xl"><p class="text-xs text-gray-400">Soil Moisture</p><p class="text-xl font-bold font-mono" data-demo="92%">--</p></div>
+                        <div class="p-4 bg-white/5 rounded-xl"><p class="text-xs text-gray-400">Node Consensus</p><p class="text-xl font-bold font-mono" data-demo="3 / 4">--</p></div>
+                        <div class="p-4 bg-white/5 rounded-xl"><p class="text-xs text-gray-400">AI Confidence</p><p class="text-xl font-bold font-mono" data-demo="95%">--</p></div>
+                    </div>
+                    <div id="demo-alert" class="p-6 rounded-2xl bg-red-600/10 border border-red-500/40 opacity-30 transition-all duration-500">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="flex items-center gap-2 font-bold text-red-400"><span class="w-3 h-3 rounded-full bg-red-500"></span>CRITICAL FLOOD ALERT</span>
+                            <span class="text-xs font-mono text-gray-400">VX-EVT-00127</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 text-center">
+                            <div><p class="text-2xl font-black">91</p><p class="text-[10px] text-gray-400">RISK /100</p></div>
+                            <div><p class="text-2xl font-black">7,240</p><p class="text-[10px] text-gray-400">PEOPLE</p></div>
+                            <div><p class="text-2xl font-black">31</p><p class="text-[10px] text-gray-400">MIN TO IMPACT</p></div>
+                            <div><p class="text-2xl font-black">01</p><p class="text-[10px] text-gray-400">HOSPITAL</p></div>
+                        </div>
+                        <p class="mt-4 text-sm text-gray-300">Downstream risk increasing: Village D in 31 minutes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipients -->
+            <div class="mt-14 text-center">
+                <p class="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">Alert goes straight to</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="shield" class="w-4 h-4 text-blue-400"></i>Disaster Management</span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="flame" class="w-4 h-4 text-orange-400"></i>Fire Department</span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="siren" class="w-4 h-4 text-red-400"></i>Police</span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="landmark" class="w-4 h-4 text-amber-400"></i>Local Administration</span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="users" class="w-4 h-4 text-green-400"></i>Communities</span>
+                    <span class="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full"><i data-lucide="smartphone" class="w-4 h-4 text-cyan-400"></i>Citizens</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Approach Section -->
+    <section id="technical" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Technical Approach</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Hardware &amp; Software Stack</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="circuit-board" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-6">Hardware</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>ESP32-S3 (Edge AI Microcontroller)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>VENTUNO Q (Regional AI Gateway)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Industrial Environmental Sensors (Temperature, Humidity, Air Quality)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Soil Sensors (Soil Moisture, pH, EC)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Water Quality Sensors (Water Level, Flow, pH, Turbidity, Conductivity)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Rain Gauge (ITE525)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Vibration &amp; Tilt Sensor (ifm VSA001 / Industrial Inclinometer)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Quectel EC25-E (4G LTE / GSM / GPRS + GPS / GNSS Module)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Wi-SUN FAN (Wireless Smart Utility Network – Field Area Network Module)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Local Storage (microSD / NVMe)</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i>Solar Panel (50–100W)</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="code-2" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-6">Software</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">Python</b> — AI/ML &amp; Data Processing</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">C/C++</b> — ESP32-S3 Firmware</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">TensorFlow Lite Micro</b> — Edge AI</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">PyTorch</b> — Model Training</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">ONNX Runtime</b> — AI Model Deployment</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">FastAPI</b> — Backend &amp; APIs</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">PostgreSQL + TimescaleDB</b> — Data Storage</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">React.js</b> — Web Dashboard</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">Leaflet / Mapbox</b> — Risk Map</span></li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"></i><span><b class="text-gray-800">Qualcomm AI Hub / SDK</b> — VENTUNO Q AI Deployment</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feasibility Section -->
+    <section id="feasibility" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="check-square" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Feasibility</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Feasibility &amp; Viability</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="settings" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Technical Feasibility</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><b class="text-gray-800">Ultra-Light Edge AI</b> — 8-bit TinyML, &lt;180 KB SRAM.</li>
+                        <li><b class="text-gray-800">Low Latency</b> — &lt;25 ms decision time.</li>
+                        <li><b class="text-gray-800">Dual Communication</b> - Wi-SUN FAN + GSM/4G fallback.</li>
+                        <li><b class="text-gray-800">Off-Grid Operation</b> — Local alerts + data storage.</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="sun" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Operational &amp; Power Feasibility</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><b class="text-gray-800">Adaptive Sampling</b> — Deep sleep normally; increases sampling when risk rises.</li>
+                        <li><b class="text-gray-800">Solar Powered</b> — 100W solar panel supports continuous operation.</li>
+                        <li><b class="text-gray-800">Low Power</b> — ~3.2 mA average consumption.</li>
+                        <li><b class="text-gray-800">Fault Handling</b> — Watchdog + outlier filtering reduce false triggers.</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="indian-rupee" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Economic &amp; Cost Viability</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><b class="text-gray-800">Low CapEx</b> — ₹8,000 per node.</li>
+                        <li><b class="text-gray-800">Affordable Gateway</b> — ₹20,000 VENTUNO Q gateway for 10 nodes.</li>
+                        <li><b class="text-gray-800">Low OpEx</b> — Intelligent packets reduce data &amp; cloud costs.</li>
+                        <li><b class="text-gray-800">Scalable</b> — 10 nodes + 1 gateway = ₹1,00,000.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenges & Strategies -->
+            <div class="mt-16 max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="grid grid-cols-2 bg-blue-600 text-white font-semibold">
+                    <div class="p-4 md:px-8">Challenges</div>
+                    <div class="p-4 md:px-8">Strategy to Overcome</div>
+                </div>
+                <div class="grid grid-cols-2 border-b border-gray-100">
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Compute Limits</b> — Complex AI processing is constrained by ESP32-S3’s limited memory and processing power.</div>
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">TinyML Optimization</b> — Use INT8 models for fast, low-memory inference.</div>
+                </div>
+                <div class="grid grid-cols-2 border-b border-gray-100">
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Communication Loss</b> — Severe weather can disrupt cellular and radio connectivity.</div>
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Hybrid Communication</b> - Use Wi-SUN + GSM with offline data storage.</div>
+                </div>
+                <div class="grid grid-cols-2 border-b border-gray-100">
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Sensor Errors</b> — Drift, dust, and temperature changes can cause false alarms.</div>
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Spatial Validation</b> — Cross-check anomalies across nearby nodes.</div>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Power Drain</b> — High-alert monitoring and frequent transmissions can quickly drain batteries.</div>
+                    <div class="p-4 md:px-8 text-gray-600"><b class="text-gray-800">Adaptive Power</b> — Use sleep modes and event-based sampling.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="globe" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Impact</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Impact &amp; Benefits</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="heart-handshake" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Social Impacts</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><b class="text-gray-800">Early Warning</b> — Detect hazards early.</li>
+                        <li><b class="text-gray-800">Community Safety</b> — Protect lives.</li>
+                        <li><b class="text-gray-800">Faster Response</b> — Support rescue teams.</li>
+                        <li><b class="text-gray-800">Environmental Protection</b> — Reduce environmental damage.</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Strategic &amp; Economic Impact</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><b class="text-gray-800">Lower Losses</b> — Reduce disaster damage.</li>
+                        <li><b class="text-gray-800">Cost-Effective</b> — Low-cost monitoring.</li>
+                        <li><b class="text-gray-800">Efficient Rescue</b> — Optimize resources.</li>
+                        <li><b class="text-gray-800">Scalable</b> — Deploy across sectors.</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="thumbs-up" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Benefits</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><b class="text-gray-800">Early Detection</b> — Identify hazards quickly.</li>
+                        <li><b class="text-gray-800">Faster Response</b> — Help teams act earlier.</li>
+                        <li><b class="text-gray-800">Reduced Losses</b> — Minimize damage and casualties.</li>
+                        <li><b class="text-gray-800">Reliable Monitoring</b> — Works during network failures.</li>
+                        <li><b class="text-gray-800">Cost-Effective</b> — Low-cost distributed system.</li>
+                        <li><b class="text-gray-800">Better Decisions</b> — Provides actionable intelligence.</li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="rocket" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Future Vision &amp; Scalability</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li><b class="text-gray-800">Pan-India Deployment</b> — Scale across India.</li>
+                        <li><b class="text-gray-800">Multi-Hazard Expansion</b> — Cover more hazards.</li>
+                        <li><b class="text-gray-800">Denser Node Network</b> — Increase local coverage.</li>
+                        <li><b class="text-gray-800">Government Integration</b> — Connect with authorities.</li>
+                        <li><b class="text-gray-800">Regional Intelligence</b> — Improve prediction over time.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Data Sources -->
+            <div class="mt-16 max-w-5xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-900 text-center mb-8">VISIONX – Data Sources</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="satellite" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>ISRO MOSDAC</b> — Satellite &amp; Environmental Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="map" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>ISRO Bhuvan</b> — Geospatial &amp; Land Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="satellite-dish" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>Sentinel-1 / Sentinel-2</b> — Flood, Water &amp; Vegetation Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="flame" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>NASA FIRMS</b> — Fire &amp; Hotspot Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="earth" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>NASA Earthdata</b> — Satellite &amp; Climate Dataset</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="cloud-rain" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>IMD</b> — Weather &amp; Rainfall Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="wind" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>CPCB</b> — Air Quality Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="droplets" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>CWC / India-WRIS</b> — Water &amp; Flood Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="route" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>OpenStreetMap</b> — Roads &amp; Infrastructure Data</span></div>
+                    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"><i data-lucide="cpu" class="w-5 h-5 text-blue-600 shrink-0"></i><span><b>ESP32-S3 Nodes</b> — Live Ground Sensor Data</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Research</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Research &amp; References</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="p-8 bg-white rounded-2xl shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Coimbatore Field Visit – Key Finding</h3>
+                    <div class="space-y-4 text-gray-600">
+                        <p>During our visit to the Coimbatore Fire Station, we learned that firefighters mainly depend on district-level forecasts, with limited real-time, location-specific intelligence.</p>
+                        <p>This creates difficulty in identifying which exact area is flooding, landsliding, or becoming hazardous.</p>
+                        <p>Based on their feedback, VISIONX deploys permanent TinyML Edge Nodes to detect local anomalies early and send alerts through Wi-SUN FAN (Field Area Network), enabling a shift from reactive rescue to proactive prevention.</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <a href="#demo" class="block p-6 bg-white rounded-2xl shadow-lg card-hover border border-blue-50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="video" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h3 class="text-xl font-semibold">Demo Video</h3>
+                                <p class="text-blue-600">Watch field prototype video</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#dashboard" class="block p-6 bg-white rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="monitor-dot" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h3 class="text-xl font-semibold">Working Prototype</h3>
+                                <p class="text-blue-600">Try the Command Center below ↓</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1pRwWKcHfGlphnCdfUdEtHTkHSvfc-7YU?usp=sharing" target="_blank" rel="noopener" class="block p-6 bg-white rounded-2xl shadow-lg card-hover">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+                                <i data-lucide="file-text" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h3 class="text-xl font-semibold">Research Paper</h3>
+                                <p class="text-blue-600 truncate">Google Drive folder</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Command Center (built-in prototype dashboard) -->
+    <section id="dashboard" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="monitor-dot" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Command Center</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Try the VisionX Prototype</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">26 edge nodes across the <b>Yamuna Basin Sector · NCR</b>. Click any node, alert or card to explore.</p>
+            </div>
+
+            <div id="vx-stats" class="grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+            <div class="flex flex-wrap gap-x-6 gap-y-1 mt-3 mb-8 text-sm text-gray-500">
+                <span class="font-semibold text-gray-700">System health</span>
+                <span>Edge AI <b class="text-green-600">98%</b></span>
+                <span>Gateway <b class="text-green-600">100%</b></span>
+                <span>Cloud <b class="text-green-600">97%</b></span>
+                <span>Sensors <b class="text-green-600">94%</b></span>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div role="tablist" aria-label="Dashboard views" class="inline-flex p-1 bg-gray-100 rounded-xl">
+                    <button data-tab="map" role="tab">Risk Map</button>
+                    <button data-tab="alerts" role="tab">Alert System <span id="vx-alert-count" class="ml-1 px-1.5 rounded-full bg-red-600 text-white text-xs"></span></button>
+                    <button data-tab="nodes" role="tab">All Nodes</button>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    System operational · Gateway connected · <span id="vx-clock" class="tabular-nums"></span>
+                </div>
+            </div>
+
+            <!-- Risk Map -->
+            <div data-panel="map" class="grid lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-slate-900 rounded-2xl p-4">
+                    <div id="vx-layers" class="flex flex-wrap gap-2 mb-3"></div>
+                    <div class="overflow-x-auto">
+                        <svg id="vx-map" viewBox="0 0 1000 720" class="w-full min-w-[560px] h-auto" aria-label="Risk map of monitored nodes and hazard zones"></svg>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-4 mt-3 text-xs text-slate-400">
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>Critical</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-600"></span>High</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>Warning</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-green-600"></span>Normal</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-gray-400"></span>Offline</span>
+                        <span id="vx-map-count" class="ml-auto"></span>
+                    </div>
+                </div>
+                <aside id="vx-node-detail" class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100"></aside>
+            </div>
+
+            <!-- Alert System -->
+            <div data-panel="alerts" hidden class="grid lg:grid-cols-5 gap-6">
+                <div id="vx-alert-list" class="lg:col-span-2 space-y-3"></div>
+                <div id="vx-alert-detail" class="lg:col-span-3 bg-white rounded-2xl shadow-lg p-6 border border-gray-100"></div>
+            </div>
+
+            <!-- All Nodes -->
+            <div data-panel="nodes" hidden>
+                <div class="flex flex-wrap items-center gap-2 mb-5">
+                    <div id="vx-node-filters" class="flex flex-wrap gap-2"></div>
+                    <span id="vx-node-count" class="ml-auto text-sm text-gray-500"></span>
+                </div>
+                <div id="vx-node-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+            </div>
+
+            <p class="mt-6 text-xs text-gray-400">Prototype data is simulated for demonstration.</p>
+            <p class="mt-12 text-center text-2xl font-semibold text-gray-900">“Traditional systems monitor the environment. <span class="gradient-text">VisionX understands it.</span>”</p>
+        </div>
+        <div id="vx-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-3 rounded-xl bg-gray-900 text-white text-sm shadow-lg" hidden></div>
+    </section>
+
+    <!-- Mentors Section -->
+    <section id="mentors" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-14 space-y-4">
+                <div class="inline-flex items-center space-x-2 text-blue-600">
+                    <i data-lucide="user-check" class="w-6 h-6"></i>
+                    <span class="text-sm font-semibold uppercase tracking-wider">Guidance &amp; Mentorship</span>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900">Our Mentors</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Mentor 1 -->
+                <div class="p-8 bg-white rounded-2xl shadow-lg border border-gray-100 text-center card-hover flex flex-col items-center">
+                    <div class="w-48 h-48 rounded-2xl overflow-hidden shadow-md mb-6 border-4 border-blue-50/80">
+                        <img src="muthusamysir.jpg" alt="Mr. K. Muthusamy" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Mr. K. Muthusamy</h3>
+                    <p class="text-sm font-medium text-gray-600 mb-1">Head - Technical Competitions and Hackathons</p>
+                    <p class="text-xs font-semibold text-blue-600">Rathinam Technical Campus</p>
+                </div>
+
+                <!-- Mentor 2 -->
+                <div class="p-8 bg-white rounded-2xl shadow-lg border border-gray-100 text-center card-hover flex flex-col items-center">
+                    <div class="w-48 h-48 rounded-2xl overflow-hidden shadow-md mb-6 border-4 border-blue-50/80">
+                        <img src="gajendransir.jpg" alt="Er. Gajendran Parthasarathi" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Er. Gajendran Parthasarathi</h3>
+                    <p class="text-sm font-medium text-gray-600 mb-1">Head - School of Design and Innovation</p>
+                    <p class="text-xs font-semibold text-blue-600">Rathinam Technical Campus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <p class="text-gray-400">
+                    © <span id="year"></span> Team VISIONX · Smart India Hackathon 2026. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu
+        const menu = document.getElementById('mobile-menu');
+        document.getElementById('menu-btn').addEventListener('click', () => { menu.hidden = !menu.hidden; });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.hidden = true; }));
+
+        // Scroll progress bar
+        const bar = document.getElementById('progress');
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+        }, { passive: true });
+
+        // Flash-flood demo
+        const runBtn = document.getElementById('run-demo');
+        runBtn.addEventListener('click', () => {
+            const steps = document.querySelectorAll('.demo-step');
+            const vals = document.querySelectorAll('[data-demo]');
+            const alertBox = document.getElementById('demo-alert');
+            runBtn.disabled = true;
+            runBtn.classList.add('opacity-60');
+            steps.forEach(s => s.classList.remove('on'));
+            vals.forEach(v => v.textContent = '--');
+            alertBox.classList.add('opacity-30');
+            alertBox.classList.remove('pulse');
+
+            steps.forEach((s, i) => setTimeout(() => s.classList.add('on'), 400 + i * 1000));
+            vals.forEach((v, i) => setTimeout(() => v.textContent = v.dataset.demo, 700 + i * 800));
+            setTimeout(() => {
+                alertBox.classList.remove('opacity-30');
+                alertBox.classList.add('pulse');
+                runBtn.disabled = false;
+                runBtn.classList.remove('opacity-60');
+                runBtn.querySelector('span').textContent = 'Replay Demo';
+            }, 400 + steps.length * 1000);
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('reveal-on-scroll');
+            observer.observe(section);
+        });
+    </script>
+    <script>
+/* ============================================================
+   VISIONX — DATA LAYER
+   Nodes, per-node sensor models, alerts, events, map zones.
+   ============================================================ */
+
+// ------------------------------------------------------------
+// Deterministic PRNG so every node keeps stable "personality"
+// across reloads instead of flickering random values.
+// ------------------------------------------------------------
+function vxSeed(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+function vxRand(seed) {
+  let t = (seed + 0x6D2B79F5) >>> 0;
+  t = Math.imul(t ^ (t >>> 15), t | 1);
+  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+
+// ------------------------------------------------------------
+// SENSOR SPECS — what each node type physically measures.
+// `normal` = healthy baseline, `stress` = value at 100% risk.
+// ------------------------------------------------------------
+const SENSOR_SPECS = {
+  Water: [
+    { key:'level',     label:'Water Level',    unit:'m',     icon:'≈', normal:3.10, stress:4.80, dec:2 },
+    { key:'flow',      label:'Flow Rate',      unit:'m³/s',  icon:'⇉', normal:12.0, stress:54.0, dec:1 },
+    { key:'rain',      label:'Rainfall',       unit:'mm/h',  icon:'☂', normal:5.0,  stress:56.0, dec:1 },
+    { key:'turbidity', label:'Turbidity',      unit:'NTU',   icon:'◍', normal:14,   stress:190,  dec:0 },
+    { key:'ph',        label:'pH',             unit:'',      icon:'⌀', normal:7.20, stress:6.05, dec:2 },
+    { key:'tds',       label:'TDS / EC',       unit:'ppm',   icon:'⚡', normal:305,  stress:840,  dec:0 },
+    { key:'do',        label:'Dissolved O₂',   unit:'mg/L',  icon:'◎', normal:7.80, stress:4.10, dec:1 },
+    { key:'wtemp',     label:'Water Temp',     unit:'°C',    icon:'🌡', normal:24.5, stress:30.2, dec:1 },
+    { key:'humidity',  label:'Humidity',       unit:'%',     icon:'💧', normal:66,   stress:95,   dec:0 },
+    { key:'pressure',  label:'Air Pressure',   unit:'hPa',   icon:'◐', normal:1011, stress:992,  dec:0 },
+  ],
+  Land: [
+    { key:'temp',      label:'Temperature',    unit:'°C',    icon:'🌡', normal:31.5, stress:45.0, dec:1 },
+    { key:'humidity',  label:'Humidity',       unit:'%',     icon:'💧', normal:56,   stress:19,   dec:0 },
+    { key:'soil',      label:'Soil Moisture',  unit:'%',     icon:'⛰', normal:38,   stress:9,    dec:0 },
+    { key:'smoke',     label:'Smoke Density',  unit:'ppm',   icon:'☁', normal:0.20, stress:7.40, dec:2 },
+    { key:'pm25',      label:'PM2.5',          unit:'µg/m³', icon:'◍', normal:42,   stress:178,  dec:0 },
+    { key:'gas',       label:'CO / Gas',       unit:'ppm',   icon:'⚗', normal:1.10, stress:9.60, dec:2 },
+    { key:'vibration', label:'Vibration',      unit:'mm/s',  icon:'∿', normal:0.40, stress:6.30, dec:2 },
+    { key:'tilt',      label:'Ground Tilt',    unit:'°',     icon:'◺', normal:0.30, stress:4.20, dec:2 },
+    { key:'rain',      label:'Rainfall',       unit:'mm/h',  icon:'☂', normal:3.0,  stress:42.0, dec:1 },
+    { key:'pressure',  label:'Air Pressure',   unit:'hPa',   icon:'◐', normal:1011, stress:996,  dec:0 },
+  ],
+  Air: [
+    { key:'aqi',       label:'AQI',            unit:'',      icon:'◉', normal:64,   stress:296,  dec:0 },
+    { key:'pm25',      label:'PM2.5',          unit:'µg/m³', icon:'◍', normal:38,   stress:182,  dec:0 },
+    { key:'pm10',      label:'PM10',           unit:'µg/m³', icon:'◌', normal:58,   stress:248,  dec:0 },
+    { key:'co2',       label:'CO₂',            unit:'ppm',   icon:'⚗', normal:418,  stress:742,  dec:0 },
+    { key:'no2',       label:'NO₂',            unit:'ppb',   icon:'⚗', normal:17,   stress:98,   dec:0 },
+    { key:'so2',       label:'SO₂',            unit:'ppb',   icon:'⚗', normal:6,    stress:52,   dec:0 },
+    { key:'o3',        label:'Ozone (O₃)',     unit:'ppb',   icon:'◎', normal:29,   stress:121,  dec:0 },
+    { key:'temp',      label:'Temperature',    unit:'°C',    icon:'🌡', normal:30.8, stress:42.5, dec:1 },
+    { key:'humidity',  label:'Humidity',       unit:'%',     icon:'💧', normal:58,   stress:26,   dec:0 },
+    { key:'pressure',  label:'Air Pressure',   unit:'hPa',   icon:'◐', normal:1011, stress:997,  dec:0 },
+    { key:'wind',      label:'Wind Speed',     unit:'m/s',   icon:'≫', normal:3.60, stress:0.90, dec:2 },
+  ],
+};
+
+// Rank a sensor reading by how far it has moved toward the stress value.
+function vxLevelFromT(t) {
+  if (t >= 0.78) return 'critical';
+  if (t >= 0.56) return 'high';
+  if (t >= 0.34) return 'warning';
+  return 'normal';
+}
+
+// Build the full sensor board for one node.
+function buildSensors(node) {
+  const specs = SENSOR_SPECS[node.type] || [];
+  const riskT = Math.max(0, Math.min(1, node.risk / 100));
+
+  return specs.map((spec, si) => {
+    const seed = vxSeed(node.id + ':' + spec.key);
+    // Each sensor responds to node risk with its own sensitivity + offset.
+    const sensitivity = 0.55 + vxRand(seed) * 0.75;
+    const offset = (vxRand(seed + 11) - 0.5) * 0.18;
+    let t = Math.max(0, Math.min(1, riskT * sensitivity + offset));
+
+    const span = spec.stress - spec.normal;
+    const value = spec.normal + span * t;
+    const baseline = spec.normal;
+
+    // 24-point history easing from calm toward the current reading.
+    const history = [];
+    for (let i = 0; i < 24; i++) {
+      const p = i / 23;
+      const eased = Math.pow(p, 1.9);
+      const noise = (vxRand(seed + i * 7 + 3) - 0.5) * 0.13;
+      const ht = Math.max(0, Math.min(1, t * eased + noise * (0.35 + p * 0.65)));
+      history.push(spec.normal + span * ht);
+    }
+    history[23] = value;
+
+    const prev = history[22];
+    const trend = value > prev * 1.005 ? 'up' : value < prev * 0.995 ? 'down' : 'flat';
+    const devPct = baseline !== 0 ? ((value - baseline) / Math.abs(baseline)) * 100 : 0;
+
+    return {
+      key: spec.key,
+      label: spec.label,
+      unit: spec.unit,
+      icon: spec.icon,
+      dec: spec.dec,
+      value: value,
+      baseline: baseline,
+      dev: devPct,
+      level: node.status === 'offline' ? 'offline' : vxLevelFromT(t),
+      trend: trend,
+      history: history,
+      order: si,
+      // How volatile this reading is when simulated live.
+      volatility: (Math.abs(span) / 100) * (0.6 + vxRand(seed + 91) * 0.9),
+      min: Math.min(spec.normal, spec.stress),
+      max: Math.max(spec.normal, spec.stress),
+    };
+  });
+}
+
+// ------------------------------------------------------------
+// NODES — 26 edge units across the monitored region.
+// ------------------------------------------------------------
+const DATA = {
+  region: { name: 'Yamuna Basin Sector · NCR', bounds: [[28.46, 76.96], [28.82, 77.46]] },
+
+  nodes: [
+    { id:'WATER-07', type:'Water', location:'River Basin / Zone 04',    zone:'Zone 04',      lat:28.612, lng:77.118, status:'online',  risk:91, model:'Flood-v1.4',     signal:4, battery:87, lastSync:'12s', riskLevel:'critical', conf:95, installed:'2024-03-11', firmware:'2.4.1', power:'Solar 18W', uplink:'Wi-SUN → GSM' },
+    { id:'WATER-08', type:'Water', location:'Zone 04 North',            zone:'Zone 04',      lat:28.641, lng:77.092, status:'online',  risk:83, model:'Flood-v1.4',     signal:4, battery:79, lastSync:'8s',  riskLevel:'critical', conf:92, installed:'2024-03-11', firmware:'2.4.1', power:'Solar 18W', uplink:'Wi-SUN → GSM' },
+    { id:'WATER-09', type:'Water', location:'Upstream Gate 02',         zone:'Zone 03',      lat:28.678, lng:77.152, status:'online',  risk:76, model:'Flood-v1.4',     signal:3, battery:91, lastSync:'15s', riskLevel:'high',     conf:89, installed:'2024-01-22', firmware:'2.4.1', power:'Solar 18W', uplink:'Wi-SUN' },
+    { id:'WATER-10', type:'Water', location:'Tributary Branch',         zone:'Zone 03',      lat:28.702, lng:77.208, status:'online',  risk:21, model:'Flood-v1.4',     signal:2, battery:64, lastSync:'42s', riskLevel:'normal',   conf:68, installed:'2024-05-04', firmware:'2.3.8', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'WATER-11', type:'Water', location:'Village 06 Creek',         zone:'Zone 06',      lat:28.556, lng:77.061, status:'offline', risk:0,  model:'Flood-v1.4',     signal:0, battery:64, lastSync:'4m',  riskLevel:'offline',  conf:0,  installed:'2024-05-04', firmware:'2.3.8', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'LAND-04',  type:'Land',  location:'Industrial Zone 02',       zone:'Zone 02',      lat:28.734, lng:77.318, status:'online',  risk:76, model:'Fire-v1.2',      signal:4, battery:91, lastSync:'9s',  riskLevel:'high',     conf:89, installed:'2023-11-30', firmware:'2.4.1', power:'Grid + UPS', uplink:'4G' },
+    { id:'LAND-05',  type:'Land',  location:'Forest Zone 01',           zone:'Zone 01',      lat:28.708, lng:77.036, status:'online',  risk:14, model:'Fire-v1.2',      signal:3, battery:85, lastSync:'18s', riskLevel:'normal',   conf:92, installed:'2023-11-30', firmware:'2.4.1', power:'Solar 18W', uplink:'Wi-SUN' },
+    { id:'LAND-06',  type:'Land',  location:'Farm Belt South',          zone:'Zone 05',      lat:28.566, lng:77.244, status:'online',  risk:28, model:'Fire-v1.2',      signal:3, battery:78, lastSync:'22s', riskLevel:'normal',   conf:87, installed:'2024-02-17', firmware:'2.4.0', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'AIR-01',   type:'Air',   location:'Industrial Zone 02',       zone:'Zone 02',      lat:28.746, lng:77.296, status:'online',  risk:76, model:'Pollution-v2.1', signal:4, battery:94, lastSync:'11s', riskLevel:'high',     conf:89, installed:'2023-09-08', firmware:'2.4.1', power:'Grid + UPS', uplink:'4G' },
+    { id:'AIR-02',   type:'Air',   location:'Urban Zone 11',            zone:'Zone 11',      lat:28.598, lng:77.222, status:'online',  risk:61, model:'Pollution-v2.1', signal:4, battery:88, lastSync:'7s',  riskLevel:'warning',  conf:84, installed:'2023-09-08', firmware:'2.4.1', power:'Grid + UPS', uplink:'4G' },
+    { id:'AIR-03',   type:'Air',   location:'Highway Corridor',         zone:'Zone 08',      lat:28.664, lng:77.372, status:'online',  risk:33, model:'Pollution-v2.1', signal:3, battery:72, lastSync:'19s', riskLevel:'normal',   conf:91, installed:'2024-04-19', firmware:'2.4.0', power:'Solar 18W', uplink:'4G' },
+    { id:'LAND-07',  type:'Land',  location:'Hill Slope Zone B',        zone:'Zone B',       lat:28.782, lng:77.104, status:'online',  risk:42, model:'Landslide-v1.0',signal:3, battery:83, lastSync:'14s', riskLevel:'warning',  conf:82, installed:'2024-06-25', firmware:'2.4.1', power:'Solar 18W', uplink:'Wi-SUN' },
+    { id:'LAND-08',  type:'Land',  location:'Rocky Ridge',              zone:'Zone B',       lat:28.796, lng:77.166, status:'online',  risk:18, model:'Landslide-v1.0',signal:2, battery:71, lastSync:'31s', riskLevel:'normal',   conf:88, installed:'2024-06-25', firmware:'2.3.8', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'WATER-12', type:'Water', location:'Reservoir Dam East',       zone:'Zone 07',      lat:28.688, lng:77.422, status:'online',  risk:37, model:'Flood-v1.4',     signal:4, battery:96, lastSync:'6s',  riskLevel:'normal',   conf:94, installed:'2023-08-14', firmware:'2.4.1', power:'Grid + UPS', uplink:'Fibre' },
+    { id:'AIR-04',   type:'Air',   location:'Forest Zone 03',           zone:'Zone 01',      lat:28.726, lng:76.998, status:'online',  risk:9,  model:'Pollution-v2.1', signal:2, battery:61, lastSync:'55s', riskLevel:'normal',   conf:90, installed:'2024-07-02', firmware:'2.3.8', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'LAND-09',  type:'Land',  location:'Agricultural Zone 05',     zone:'Zone 05',      lat:28.534, lng:77.196, status:'online',  risk:22, model:'Fire-v1.2',      signal:3, battery:88, lastSync:'12s', riskLevel:'normal',   conf:85, installed:'2024-02-17', firmware:'2.4.0', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'WATER-13', type:'Water', location:'River Mouth Delta',        zone:'Zone 09',      lat:28.502, lng:77.148, status:'online',  risk:54, model:'Flood-v1.4',     signal:3, battery:74, lastSync:'24s', riskLevel:'warning',  conf:78, installed:'2024-01-22', firmware:'2.4.0', power:'Solar 18W', uplink:'Wi-SUN → GSM' },
+    { id:'LAND-10',  type:'Land',  location:'Urban Zone 11 South',      zone:'Zone 11',      lat:28.576, lng:77.268, status:'online',  risk:61, model:'Heat-v1.0',      signal:4, battery:90, lastSync:'8s',  riskLevel:'warning',  conf:84, installed:'2023-12-05', firmware:'2.4.1', power:'Grid + UPS', uplink:'4G' },
+    { id:'AIR-05',   type:'Air',   location:'Port Area 07',             zone:'Zone 07',      lat:28.652, lng:77.442, status:'online',  risk:48, model:'Pollution-v2.1', signal:3, battery:77, lastSync:'16s', riskLevel:'warning',  conf:81, installed:'2024-03-28', firmware:'2.4.0', power:'Grid + UPS', uplink:'4G' },
+    { id:'WATER-14', type:'Water', location:'Eastern Canal',            zone:'Zone 08',      lat:28.622, lng:77.386, status:'online',  risk:31, model:'Flood-v1.4',     signal:3, battery:83, lastSync:'21s', riskLevel:'normal',   conf:87, installed:'2024-03-28', firmware:'2.4.0', power:'Solar 18W', uplink:'Wi-SUN' },
+    { id:'LAND-11',  type:'Land',  location:'Zone C Farmland',          zone:'Zone C',       lat:28.488, lng:77.282, status:'online',  risk:17, model:'Fire-v1.2',      signal:2, battery:69, lastSync:'38s', riskLevel:'normal',   conf:89, installed:'2024-08-09', firmware:'2.3.8', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'AIR-06',   type:'Air',   location:'Traffic Hub 03',           zone:'Zone 11',      lat:28.612, lng:77.256, status:'online',  risk:41, model:'Pollution-v2.1', signal:3, battery:82, lastSync:'13s', riskLevel:'warning',  conf:86, installed:'2023-12-05', firmware:'2.4.1', power:'Grid + UPS', uplink:'4G' },
+    { id:'LAND-12',  type:'Land',  location:'Village D Outskirts',      zone:'Village D',    lat:28.544, lng:77.104, status:'online',  risk:66, model:'Flood-v1.4',     signal:3, battery:78, lastSync:'10s', riskLevel:'warning',  conf:83, installed:'2024-05-04', firmware:'2.4.1', power:'Solar 18W', uplink:'Wi-SUN → GSM' },
+    { id:'WATER-15', type:'Water', location:'Lake Monitoring Point',    zone:'Zone 07',      lat:28.762, lng:77.398, status:'online',  risk:12, model:'Flood-v1.4',     signal:4, battery:95, lastSync:'5s',  riskLevel:'normal',   conf:96, installed:'2023-08-14', firmware:'2.4.1', power:'Grid + UPS', uplink:'Fibre' },
+    { id:'WATER-16', type:'Water', location:'Zone B Downstream',        zone:'Zone B',       lat:28.806, lng:77.238, status:'offline', risk:0,  model:'Flood-v1.4',     signal:0, battery:48, lastSync:'7m',  riskLevel:'offline',  conf:0,  installed:'2024-06-25', firmware:'2.3.8', power:'Solar 12W', uplink:'Wi-SUN' },
+    { id:'LAND-13',  type:'Land',  location:'Industrial Zone East',     zone:'Zone 02',      lat:28.718, lng:77.348, status:'online',  risk:58, model:'Fire-v1.2',      signal:3, battery:86, lastSync:'9s',  riskLevel:'warning',  conf:80, installed:'2023-11-30', firmware:'2.4.1', power:'Grid + UPS', uplink:'4G' },
+  ],
+
+  // Risk zones drawn on the map.
+  zones: [
+    { id:'Z-04', name:'Critical Flood Zone', level:'critical', lat:28.620, lng:77.110, radius:3600, hazard:'Flood', pop:7240 },
+    { id:'Z-02', name:'Industrial Plume Zone', level:'high', lat:28.740, lng:77.308, radius:2800, hazard:'Air Pollution', pop:3120 },
+    { id:'Z-11', name:'Urban Heat Island', level:'warning', lat:28.594, lng:77.242, radius:3200, hazard:'Heat', pop:8900 },
+    { id:'Z-B',  name:'Slope Watch Area', level:'watch', lat:28.788, lng:77.132, radius:2200, hazard:'Landslide', pop:210 },
+  ],
+
+  alerts: [
+    { severity:'critical', type:'CRITICAL FLOOD',   hazard:'Flood',         location:'River Basin / Zone 04', node:'WATER-07', risk:91, conf:95, ago:'2 min',  minsAgo:2,   pop:7240, prop:'31 min', id:'VX-EVT-00127', active:true,  status:'open' },
+    { severity:'high',     type:'AIR POLLUTION',    hazard:'Air Pollution', location:'Industrial Zone 02',    node:'AIR-01',   risk:76, conf:89, ago:'14 min', minsAgo:14,  pop:3120, prop:'45 min', id:'VX-EVT-00128', active:true,  status:'open' },
+    { severity:'warning',  type:'EXTREME HEAT',     hazard:'Heat',          location:'Urban Zone 11',         node:'LAND-10',  risk:61, conf:84, ago:'31 min', minsAgo:31,  pop:8900, prop:null,     id:'VX-EVT-00129', active:true,  status:'open' },
+    { severity:'warning',  type:'RIVER RISE WATCH', hazard:'Flood',         location:'River Mouth Delta',     node:'WATER-13', risk:54, conf:78, ago:'48 min', minsAgo:48,  pop:1450, prop:null,     id:'VX-EVT-00130', active:true,  status:'open' },
+    { severity:'normal',   type:'LANDSLIDE WATCH',  hazard:'Landslide',     location:'Hill Slope Zone B',     node:'LAND-07',  risk:42, conf:82, ago:'1h 12m', minsAgo:72,  pop:210,  prop:null,     id:'VX-EVT-00126', active:false, status:'acknowledged' },
+    { severity:'normal',   type:'SOIL DRYNESS',     hazard:'Fire',          location:'Forest Zone 01',        node:'LAND-05',  risk:28, conf:91, ago:'2h 5m',  minsAgo:125, pop:0,    prop:null,     id:'VX-EVT-00125', active:false, status:'resolved' },
+  ],
+
+  events: [
+    {
+      title:'FLOOD EVENT', id:'VX-EVT-00127', status:'CRITICAL', risk:91, conf:95, severity:'crit', node:'WATER-07',
+      timeline:[
+        {time:'14:27', text:'Rainfall anomaly detected by WATER-07'},
+        {time:'14:28', text:'Water level rise detected (+22 cm/min)'},
+        {time:'14:29', text:'Upstream node WATER-09 confirmation'},
+        {time:'14:30', text:'Multi-node consensus achieved (3/4)'},
+        {time:'14:31', text:'Flood event verified by AI model'},
+        {time:'14:31', text:'CRITICAL alert issued to operators'},
+      ],
+      evidence:['Water level anomaly (+34% above baseline)','Rainfall anomaly (2.4× normal)','Soil saturation confirmed','Upstream node confirmation','Neighboring node agreement (3/4)'],
+      impact:['Population: 7,240','Infrastructure: 4','Hospitals: 1','Schools: 2','Major roads: 1'],
+      prediction:'Zone 04 → Zone B → Village D. Estimated arrival: 31 minutes. Downstream communities should initiate evacuation protocol.',
+    },
+    {
+      title:'AIR POLLUTION EVENT', id:'VX-EVT-00128', status:'HIGH', risk:76, conf:89, severity:'high', node:'AIR-01',
+      timeline:[
+        {time:'14:14', text:'PM2.5 spike detected at AIR-01'},
+        {time:'14:15', text:'Gas concentration rise confirmed'},
+        {time:'14:16', text:'Temperature inversion identified'},
+        {time:'14:17', text:'Cross-node verification (2/3)'},
+        {time:'14:17', text:'HIGH alert issued'},
+      ],
+      evidence:['PM2.5 anomaly (+133% above baseline)','Gas concentration elevation','Temperature inversion layer confirmed','Wind pattern anomaly'],
+      impact:['Population: 3,120','Industrial workers: 450','Sensitive groups: 890'],
+      prediction:'Pollution plume expected to drift north-west toward residential area within 45 minutes.',
+    },
+    {
+      title:'EXTREME HEAT EVENT', id:'VX-EVT-00129', status:'WARNING', risk:61, conf:84, severity:'warn', node:'LAND-10',
+      timeline:[
+        {time:'13:58', text:'Temperature anomaly detected at LAND-10'},
+        {time:'14:01', text:'Humidity drop correlated'},
+        {time:'14:05', text:'Urban heat island pattern identified'},
+        {time:'14:10', text:'WARNING alert issued'},
+      ],
+      evidence:['Temperature +14% above baseline','Humidity -22% below normal','Night-time heat retention pattern','Solar irradiance above normal'],
+      impact:['Population: 8,900','Vulnerable persons: 2,100','Health facilities: 1'],
+      prediction:'Sustained heat expected for 6–8 hours. Risk of heat exhaustion in outdoor workers. Peak temperature forecast: 46°C.',
+    },
+    {
+      title:'RIVER RISE WATCH', id:'VX-EVT-00130', status:'WARNING', risk:54, conf:78, severity:'warn', node:'WATER-13',
+      timeline:[
+        {time:'13:41', text:'Gradual level rise at WATER-13'},
+        {time:'13:52', text:'Turbidity increase confirmed'},
+        {time:'14:03', text:'Delta backflow pattern flagged'},
+        {time:'14:06', text:'WARNING alert issued'},
+      ],
+      evidence:['Water level +18% above baseline','Turbidity 3.1× normal','Tidal backflow signature','Upstream discharge increase'],
+      impact:['Population: 1,450','Fishing settlements: 3','Low-lying roads: 2'],
+      prediction:'Delta level expected to peak in 2–3 hours. Monitor Village D approach road for submersion.',
+    },
+    {
+      title:'LANDSLIDE WATCH', id:'VX-EVT-00126', status:'WATCH', risk:42, conf:82, severity:'warn', node:'LAND-07',
+      timeline:[
+        {time:'13:05', text:'Ground tilt drift detected at LAND-07'},
+        {time:'13:18', text:'Vibration signature above baseline'},
+        {time:'13:29', text:'Slope saturation cross-checked'},
+        {time:'13:33', text:'WATCH advisory issued'},
+      ],
+      evidence:['Tilt drift +1.4° over 6 hours','Vibration 2.2× baseline','Slope soil saturation rising'],
+      impact:['Population: 210','Hill road: 1','Settlements: 2'],
+      prediction:'Slope remains stable but sensitive to further rainfall. Re-evaluate if rainfall exceeds 25 mm/h.',
+    },
+    {
+      title:'SOIL DRYNESS', id:'VX-EVT-00125', status:'RESOLVED', risk:28, conf:91, severity:'warn', node:'LAND-05',
+      timeline:[
+        {time:'12:22', text:'Soil moisture drop at LAND-05'},
+        {time:'12:40', text:'Fire-risk index elevated'},
+        {time:'13:35', text:'Moisture recovered after irrigation'},
+        {time:'13:40', text:'Event auto-resolved'},
+      ],
+      evidence:['Soil moisture -36.8% below baseline','Ambient humidity below 30%','No smoke signature detected'],
+      impact:['Population: 0','Forest area: 4 km²'],
+      prediction:'No further action required. Node returned to normal operating band.',
+    },
+  ],
+
+  // Hazard layers toggled on the risk map.
+  layers: [
+    { key:'Flood',         color:'#38bdf8', checked:true,  models:['Flood-v1.4'] },
+    { key:'Fire',          color:'#f97316', checked:true,  models:['Fire-v1.2'] },
+    { key:'Air Pollution', color:'#a78bfa', checked:true,  models:['Pollution-v2.1'] },
+    { key:'Heat',          color:'#ef4444', checked:true,  models:['Heat-v1.0'] },
+    { key:'Landslide',     color:'#84cc16', checked:true,  models:['Landslide-v1.0'] },
+  ],
+};
+
+// Attach the generated sensor board to every node.
+DATA.nodes.forEach(n => { n.sensors = buildSensors(n); });
+
+// Handy lookups.
+const NODE_BY_ID = {};
+DATA.nodes.forEach(n => { NODE_BY_ID[n.id] = n; });
+
+    </script>
+    <script>
+    (() => {
+        const LV = {
+            critical: { c: '#dc2626', pill: 'bg-red-100 text-red-700', t: 'Critical' },
+            high:     { c: '#ea580c', pill: 'bg-orange-100 text-orange-700', t: 'High' },
+            warning:  { c: '#d97706', pill: 'bg-amber-100 text-amber-800', t: 'Warning' },
+            watch:    { c: '#65a30d', pill: 'bg-lime-100 text-lime-800', t: 'Watch' },
+            normal:   { c: '#16a34a', pill: 'bg-green-100 text-green-700', t: 'Normal' },
+            offline:  { c: '#9ca3af', pill: 'bg-gray-100 text-gray-500', t: 'Offline' }
+        };
+        const HAZ = { 'Flood-v1.4': 'Flood', 'Fire-v1.2': 'Fire', 'Pollution-v2.1': 'Air Pollution', 'Heat-v1.0': 'Heat', 'Landslide-v1.0': 'Landslide' };
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const $ = id => document.getElementById(id);
+        const [[la0, lo0], [la1, lo1]] = DATA.region.bounds;
+        const X = lng => (lng - lo0) / (lo1 - lo0) * 1000;
+        const Y = lat => (la1 - lat) / (la1 - la0) * 720;
+        const fmt = (v, d) => Number(v).toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d });
+        const pill = lvl => `<span class="px-2 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap ${LV[lvl].pill}">${LV[lvl].t}</span>`;
+        const signalBars = s => [1, 2, 3, 4].map(i => `<span class="inline-block w-1 rounded-sm ${i <= s ? 'bg-blue-600' : 'bg-gray-200'}" style="height:${4 + i * 3}px"></span>`).join('');
+        const spark = (h, col) => {
+            const mn = Math.min(...h), mx = Math.max(...h), r = (mx - mn) || 1;
+            const pts = h.map((v, i) => `${(i / (h.length - 1) * 90 + 1).toFixed(1)},${(22 - (v - mn) / r * 20).toFixed(1)}`).join(' ');
+            return `<svg viewBox="0 0 92 24" class="w-20 h-6 shrink-0"><polyline fill="none" stroke="${col}" stroke-width="1.8" points="${pts}"/></svg>`;
+        };
+
+        let selected = 'WATER-07';
+        let selectedAlert = DATA.alerts[0].id;
+        const layersOn = new Set(DATA.layers.map(l => l.key));
+        const nodeFilter = { type: 'All', status: 'All' };
+
+        function toast(msg) {
+            const t = $('vx-toast');
+            t.textContent = msg;
+            t.hidden = false;
+            clearTimeout(toast.timer);
+            toast.timer = setTimeout(() => { t.hidden = true; }, 2600);
+        }
+
+        function renderStats() {
+            const online = DATA.nodes.filter(n => n.status === 'online');
+            const active = DATA.alerts.filter(a => a.active).length;
+            const crit = DATA.nodes.filter(n => n.riskLevel === 'critical').length;
+            const conf = Math.round(online.reduce((s, n) => s + n.conf, 0) / online.length);
+            const tiles = [
+                ['Nodes online', `${online.length} / ${DATA.nodes.length}`, 'text-gray-900'],
+                ['Active alerts', active, 'text-red-600'],
+                ['Critical nodes', crit, 'text-red-600'],
+                ['Avg AI confidence', conf + '%', 'text-green-600']
+            ];
+            $('vx-stats').innerHTML = tiles.map(([l, v, c]) => `<div class="p-5 bg-gray-50 rounded-2xl"><p class="text-sm text-gray-500">${l}</p><p class="text-3xl font-bold tabular-nums ${c}">${v}</p></div>`).join('');
+            $('vx-alert-count').textContent = active;
+        }
+
+        // ---------- Risk Map ----------
+        function renderLayers() {
+            $('vx-layers').innerHTML = DATA.layers.map(l => {
+                const on = layersOn.has(l.key);
+                return `<button data-layer="${l.key}" aria-pressed="${on}" class="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border transition ${on ? 'border-white/30 text-white bg-white/10' : 'border-white/10 text-slate-500 line-through'}"><span class="w-2.5 h-2.5 rounded-full" style="background:${l.color}"></span>${l.key}</button>`;
+            }).join('');
+        }
+
+        function renderMap() {
+            let s = '';
+            for (let x = 0; x <= 1000; x += 100) s += `<line x1="${x}" y1="0" x2="${x}" y2="720" stroke="#1e293b"/>`;
+            for (let y = 0; y <= 720; y += 90) s += `<line x1="0" y1="${y}" x2="1000" y2="${y}" stroke="#1e293b"/>`;
+            DATA.zones.forEach(z => {
+                const c = LV[z.level].c, cx = X(z.lng), cy = Y(z.lat), rx = z.radius * 0.0205, ry = z.radius * 0.018;
+                s += `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${c}" fill-opacity="0.14" stroke="${c}" stroke-opacity="0.7" stroke-dasharray="6 5"/>`;
+                s += `<text x="${cx}" y="${cy - ry - 8}" fill="${c}" font-size="15" font-weight="600" text-anchor="middle">${z.name} · ${fmt(z.pop, 0)} people</text>`;
+            });
+            const shown = DATA.nodes.filter(n => layersOn.has(HAZ[n.model]));
+            shown.sort((a, b) => (a.id === selected) - (b.id === selected)).forEach(n => {
+                const c = LV[n.riskLevel].c, cx = X(n.lng).toFixed(1), cy = Y(n.lat).toFixed(1), sel = n.id === selected;
+                const pulse = n.riskLevel === 'critical' && !reduce
+                    ? `<circle cx="${cx}" cy="${cy}" r="10" fill="${c}"><animate attributeName="r" values="10;28" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.55;0" dur="1.8s" repeatCount="indefinite"/></circle>`
+                    : '';
+                const label = sel || n.riskLevel === 'critical'
+                    ? `<text x="${+cx + 17}" y="${+cy + 5}" fill="#e2e8f0" font-size="15" font-weight="600">${n.id}</text>`
+                    : '';
+                s += `<g class="vx-node" data-id="${n.id}" tabindex="0" role="button" aria-label="${n.id}, ${n.location}, ${LV[n.riskLevel].t}" style="cursor:pointer">${pulse}<circle cx="${cx}" cy="${cy}" r="${sel ? 13 : 9}" fill="${c}" stroke="${sel ? '#ffffff' : '#0f172a'}" stroke-width="3"/><title>${n.id} · ${n.location}</title>${label}</g>`;
+            });
+            $('vx-map').innerHTML = s;
+            $('vx-map-count').textContent = `${shown.length} nodes shown · ${DATA.region.name}`;
+        }
+
+        function renderNode() {
+            const n = NODE_BY_ID[selected], L = LV[n.riskLevel], off = n.status === 'offline';
+            const kv = [
+                ['AI model', n.model], ['Confidence', off ? '—' : n.conf + '%'],
+                ['Battery', n.battery + '%'], ['Signal', signalBars(n.signal)],
+                ['Uplink', n.uplink], ['Power', n.power],
+                ['Last sync', n.lastSync + ' ago'], ['Firmware', 'v' + n.firmware]
+            ];
+            $('vx-node-detail').innerHTML = `
+                <div class="flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400">${n.type} node</p>
+                        <h3 class="text-2xl font-bold">${n.id}</h3>
+                        <p class="text-gray-500 text-sm">${n.location}</p>
+                    </div>
+                    ${pill(n.riskLevel)}
+                </div>
+                <div class="mt-5">
+                    <div class="flex justify-between text-sm"><span class="text-gray-500">Risk score</span><b class="tabular-nums" style="color:${L.c}">${off ? 'No data' : n.risk + ' / 100'}</b></div>
+                    <div class="h-2 mt-1 bg-gray-100 rounded-full"><div class="h-full rounded-full" style="width:${n.risk}%;background:${L.c}"></div></div>
+                </div>
+                <dl class="grid grid-cols-2 gap-x-4 gap-y-3 mt-5 text-sm">
+                    ${kv.map(([k, v]) => `<div><dt class="text-gray-400 text-xs">${k}</dt><dd class="font-medium flex items-end gap-0.5 min-h-[1.25rem]">${v}</dd></div>`).join('')}
+                </dl>
+                <h4 class="mt-6 mb-1 text-sm font-semibold text-gray-900">${off ? 'Sensors <span class="text-gray-400 font-normal">(last known readings)</span>' : 'Live sensors'}</h4>
+                <ul id="vx-sensors" class="divide-y divide-gray-100 max-h-72 overflow-y-auto pr-1"></ul>`;
+            renderSensors();
+        }
+
+        function renderSensors() {
+            const n = NODE_BY_ID[selected];
+            $('vx-sensors').innerHTML = n.sensors.map(s => `
+                <li class="flex items-center gap-3 py-2 text-sm">
+                    <span class="w-2 h-2 rounded-full shrink-0" style="background:${LV[s.level].c}"></span>
+                    <span class="flex-1 text-gray-600">${s.label}</span>
+                    ${spark(s.history, LV[s.level].c)}
+                    <b class="w-24 text-right tabular-nums">${fmt(s.value, s.dec)} <span class="text-gray-400 font-normal">${s.unit}</span></b>
+                </li>`).join('');
+        }
+
+        function selectNode(id) {
+            selected = id;
+            renderMap();
+            renderNode();
+        }
+
+        // ---------- Alerts ----------
+        function renderAlerts() {
+            $('vx-alert-list').innerHTML = DATA.alerts.map(a => {
+                const c = LV[a.severity].c, sel = a.id === selectedAlert;
+                return `<button data-alert="${a.id}" class="w-full text-left p-4 rounded-xl border-l-4 transition ${sel ? 'bg-blue-50 ring-2 ring-blue-500' : 'bg-gray-50 hover:bg-gray-100'} ${a.active ? '' : 'opacity-60'}" style="border-left-color:${c}">
+                    <div class="flex items-center justify-between gap-2"><b class="text-sm">${a.type}</b><span class="text-xs text-gray-400 whitespace-nowrap">${a.ago} ago</span></div>
+                    <p class="text-sm text-gray-600">${a.location} · ${a.node}</p>
+                    <div class="flex items-center gap-2 mt-2 text-xs">
+                        <span class="font-semibold tabular-nums" style="color:${c}">Risk ${a.risk}</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="text-gray-500">${a.pop ? fmt(a.pop, 0) + ' people' : 'No population exposed'}</span>
+                        <span class="ml-auto px-2 py-0.5 rounded-full bg-white border text-gray-600 capitalize">${a.status}</span>
+                    </div>
+                </button>`;
+            }).join('');
+            renderAlertDetail();
+        }
+
+        function renderAlertDetail() {
+            const a = DATA.alerts.find(x => x.id === selectedAlert);
+            const e = DATA.events.find(x => x.id === a.id);
+            const c = LV[a.severity].c;
+            const col = (t, body) => `<div><h4 class="text-sm font-semibold mb-2">${t}</h4>${body}</div>`;
+            const metrics = [['Risk score', a.risk + ' / 100'], ['AI confidence', a.conf + '%'], ['People at risk', fmt(a.pop, 0)], ['Time to impact', a.prop || 'Stationary']];
+            $('vx-alert-detail').innerHTML = `
+                <div class="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                        <p class="text-xs font-mono text-gray-400">${e.id}</p>
+                        <h3 class="text-2xl font-bold" style="color:${c}">${e.title}</h3>
+                        <p class="text-gray-500 text-sm">${a.location} · detected by ${a.node}</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold text-white" style="background:${c}">${e.status}</span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5">
+                    ${metrics.map(([k, v]) => `<div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500">${k}</p><p class="text-lg font-bold tabular-nums">${v}</p></div>`).join('')}
+                </div>
+                <p class="mt-4 p-4 rounded-xl text-sm text-gray-700" style="background:${c}14;border:1px solid ${c}40"><b>Prediction:</b> ${e.prediction}</p>
+                <div class="grid md:grid-cols-3 gap-6 mt-6 text-sm">
+                    ${col('Event timeline', `<ol class="space-y-2">${e.timeline.map(t => `<li class="flex gap-2"><span class="font-mono text-xs text-blue-600 pt-0.5">${t.time}</span><span class="text-gray-600">${t.text}</span></li>`).join('')}</ol>`)}
+                    ${col('AI evidence', `<ul class="space-y-2">${e.evidence.map(t => `<li class="flex gap-2 text-gray-600"><span class="text-green-600">✓</span><span>${t}</span></li>`).join('')}</ul>`)}
+                    ${col('Affected assets', `<ul class="space-y-2">${e.impact.map(t => `<li class="text-gray-600">${t}</li>`).join('')}</ul>`)}
+                </div>
+                <div class="flex flex-wrap items-center gap-3 mt-6">
+                    <button data-act="map" class="px-4 py-2 rounded-lg border border-gray-300 text-sm hover:border-blue-600 hover:text-blue-600">View on map</button>
+                    ${a.active
+                        ? `<button data-act="escalate" class="px-4 py-2 rounded-lg bg-red-600 text-white text-sm hover:bg-red-700">Escalate</button>
+                           <button data-act="ack" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700">Acknowledge</button>`
+                        : ''}
+                    <span class="text-sm text-gray-500 capitalize">Status: ${a.status}</span>
+                </div>`;
+        }
+
+        // ---------- Nodes ----------
+        function renderNodeFilters() {
+            const chip = (group, v, label) => `<button data-f="${group}" data-v="${v}" class="px-3 py-1.5 rounded-full text-sm border transition ${nodeFilter[group] === v ? 'bg-blue-600 border-blue-600 text-white' : 'border-gray-300 text-gray-600 hover:border-blue-600'}">${label}</button>`;
+            $('vx-node-filters').innerHTML =
+                [['All', 'All types'], ['Water', 'Water'], ['Land', 'Land'], ['Air', 'Air']].map(([v, l]) => chip('type', v, l)).join('') +
+                '<span class="w-px bg-gray-200 mx-1"></span>' +
+                [['All', 'Any status'], ['Online', 'Online'], ['Offline', 'Offline']].map(([v, l]) => chip('status', v, l)).join('');
+        }
+
+        function renderNodes() {
+            const list = DATA.nodes
+                .filter(n => (nodeFilter.type === 'All' || n.type === nodeFilter.type) && (nodeFilter.status === 'All' || n.status === nodeFilter.status.toLowerCase()))
+                .sort((a, b) => b.risk - a.risk);
+            $('vx-node-count').textContent = `${list.length} nodes · sorted by risk`;
+            $('vx-node-grid').innerHTML = list.map(n => {
+                const L = LV[n.riskLevel];
+                return `<button data-node="${n.id}" class="text-left p-5 bg-white rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition border border-gray-100">
+                    <div class="flex items-center justify-between gap-2"><b>${n.id}</b>${pill(n.riskLevel)}</div>
+                    <p class="text-sm text-gray-500 mt-1">${n.type} · ${n.location}</p>
+                    <div class="flex items-center gap-2 mt-4">
+                        <div class="flex-1 h-1.5 bg-gray-100 rounded-full"><div class="h-full rounded-full" style="width:${n.risk}%;background:${L.c}"></div></div>
+                        <span class="text-sm font-semibold tabular-nums w-8 text-right">${n.status === 'offline' ? '—' : n.risk}</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 text-xs text-gray-500">
+                        <span>Battery ${n.battery}%</span>
+                        <span class="flex items-end gap-0.5">${signalBars(n.signal)}</span>
+                        <span>${n.lastSync} ago</span>
+                    </div>
+                </button>`;
+            }).join('');
+        }
+
+        // ---------- Tabs ----------
+        function showTab(t) {
+            document.querySelectorAll('[data-tab]').forEach(b => {
+                const on = b.dataset.tab === t;
+                b.setAttribute('aria-selected', on);
+                b.className = 'px-4 py-2 rounded-lg text-sm font-semibold transition ' + (on ? 'bg-white shadow text-blue-700' : 'text-gray-600 hover:text-gray-900');
+            });
+            document.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== t; });
+            if (t === 'map') { renderMap(); renderNode(); }
+        }
+
+        // ---------- Events ----------
+        document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+        $('vx-layers').addEventListener('click', e => {
+            const b = e.target.closest('[data-layer]');
+            if (!b) return;
+            const k = b.dataset.layer;
+            layersOn.has(k) ? layersOn.delete(k) : layersOn.add(k);
+            renderLayers();
+            renderMap();
+        });
+
+        $('vx-map').addEventListener('click', e => {
+            const g = e.target.closest('.vx-node');
+            if (g) selectNode(g.dataset.id);
+        });
+        $('vx-map').addEventListener('keydown', e => {
+            const g = e.target.closest('.vx-node');
+            if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); selectNode(g.dataset.id); }
+        });
+
+        $('vx-alert-list').addEventListener('click', e => {
+            const b = e.target.closest('[data-alert]');
+            if (!b) return;
+            selectedAlert = b.dataset.alert;
+            renderAlerts();
+        });
+
+        $('vx-alert-detail').addEventListener('click', e => {
+            const b = e.target.closest('[data-act]');
+            if (!b) return;
+            const a = DATA.alerts.find(x => x.id === selectedAlert);
+            if (b.dataset.act === 'map') { selected = a.node; showTab('map'); }
+            if (b.dataset.act === 'ack') { a.status = 'acknowledged'; a.active = false; toast(`${a.id} acknowledged`); renderAlerts(); renderStats(); }
+            if (b.dataset.act === 'escalate') { a.status = 'escalated'; toast(`${a.id} escalated to Disaster Management`); renderAlerts(); }
+        });
+
+        $('vx-node-filters').addEventListener('click', e => {
+            const b = e.target.closest('[data-f]');
+            if (!b) return;
+            nodeFilter[b.dataset.f] = b.dataset.v;
+            renderNodeFilters();
+            renderNodes();
+        });
+
+        $('vx-node-grid').addEventListener('click', e => {
+            const b = e.target.closest('[data-node]');
+            if (!b) return;
+            selected = b.dataset.node;
+            showTab('map');
+            $('dashboard').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+        });
+
+        // Live sensor simulation for the selected node
+        setInterval(() => {
+            const n = NODE_BY_ID[selected];
+            if (document.hidden || n.status === 'offline' || $('vx-sensors') === null || $('vx-node-detail').closest('[hidden]')) return;
+            n.sensors.forEach(s => {
+                const v = s.value + (Math.random() - 0.5) * s.volatility * 2;
+                s.value = Math.min(s.max * 1.08, Math.max(s.min * 0.92, v));
+                s.history = s.history.slice(1).concat(s.value);
+            });
+            renderSensors();
+        }, 2500);
+
+        const tick = () => { $('vx-clock').textContent = new Date().toLocaleTimeString('en-IN'); };
+        tick();
+        setInterval(tick, 1000);
+
+        renderStats();
+        renderLayers();
+        renderAlerts();
+        renderNodeFilters();
+        renderNodes();
+        showTab('map');
+    })();
+    </script>
+</body>
+</html>

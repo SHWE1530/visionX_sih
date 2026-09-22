@@ -1,0 +1,5 @@
+# Large video files - too large for GitHub (>100MB)
+# These must be hosted externally (Google Drive, YouTube, etc.)
+*.mp4
+*.mov
+*.avi
